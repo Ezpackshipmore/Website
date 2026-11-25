@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get a Shipping Quote | EZ Pack Ship and More</title>
+  <meta name="description" content="Request a shipping quote from EZ Pack Ship and More and see an instant price estimate.">
+  <link rel="icon" href="logo.jpg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="logo.jpg" alt="EZ Pack Ship and More logo">
+      <span class="brand-text">EZ PACK SHIP<small>AND MORE</small></span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-dark" href="quote.html" aria-current="page">Get a Quote <svg class="icon"><use href="#i-arrow"/></svg></a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">A few details is all it takes</div>
+      <h1>Let's get your package<br><span class="accent">on its way.</span></h1>
+      <p>Share your shipment details to see an estimate. Our team will follow up with the details.</p>
+    </div>
+  </section>
+
+  <section class="container quote-layout">
+    <aside class="quote-aside on-dark">
+      <div class="eyebrow light">How it works</div>
+      <h2>One quick form. <span class="accent">A clear next step.</span></h2>
+      <p>Tell us where it's going and a little about the package. We'll review your information and follow up with shipping options.</p>
+      <ol class="aside-steps">
+        <li><span class="num">1</span><div><b>Tell us about you</b><small>So we know how to reach you.</small></div></li>
+        <li><span class="num">2</span><div><b>Tell us about the package</b><small>Destination, size and weight help us quote accurately.</small></div></li>
+        <li><span class="num">3</span><div><b>We'll follow up</b><small>Our team confirms your final price and next steps.</small></div></li>
+      </ol>
+      <div class="aside-note">
+        Estimates are based on weight at $14 per lb and do not include customs. Prefer to talk?
+        <a class="aside-contact" href="tel:+19724570100"><svg class="icon"><use href="#i-phone"/></svg> (972) 457-0100</a>
+      </div>
+    </aside>
+
+    <form class="quote-form" id="quoteForm">
+      <div class="form-heading">
+        <span class="tag">Shipping quote request</span>
+        <h2>Shipment details</h2>
+        <p>Fields marked * are required.</p>
+      </div>
+
+      <div class="form-section">
+        <h3><span class="num">1</span> Your contact information</h3>
+        <div class="form-grid">
+          <label>Full name *<input name="name" autocomplete="name" required placeholder="Your full name"></label>
+          <label>Email address *<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+          <label>Phone number *<input name="phone" type="tel" autocomplete="tel" required placeholder="Your phone number"></label>
+          <label>Preferred contact method
+            <select name="contact_method"><option>Email</option><option>Phone</option><option>Text message</option></select>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3><span class="num">2</span> Where is it going?</h3>
+        <div class="form-grid">
+          <label>Shipping from *<input name="origin" required value="United States"></label>
+          <label>Destination country *<input name="destination" required placeholder="e.g. Nepal"></label>
+          <label>Destination city / ZIP<input name="destination_area" placeholder="City, postal code (if known)"></label>
+          <label>Shipment type
+            <select name="shipment_type" id="shipmentType">
+              <option>Documents</option>
+              <option selected>Personal packages</option>
+              <option>Clothing</option>
+              <option>Gifts</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3><span class="num">3</span> Package information</h3>
+        <div class="form-grid">
+          <label>Approximate weight (lb)<input name="weight" id="weight" type="number" min="0.1" step="0.1" placeholder="e.g. 8"></label>
+          <label>Package length (in)<input name="length" type="number" min="0" step="0.1" placeholder="Optional"></label>
+          <label>Package width (in)<input name="width" type="number" min="0" step="0.1" placeholder="Optional"></label>
+          <label>Package height (in)<input name="height" type="number" min="0" step="0.1" placeholder="Optional"></label>
+        </div>
+        <label class="full-label">What are you shipping? Any special instructions?
+          <textarea name="details" rows="4" placeholder="Briefly describe the contents and any special requirements. Please do not include prohibited or restricted items."></textarea>
+        </label>
+      </div>
+
+      <div class="estimate-panel">
+        <div class="estimate-top">
+          <div>
+            <span class="tag">Shipping estimate</span>
+            <h3>Get your estimate</h3>
+            <p>Our rate is $14.00 per lb. Enter your weight and destination, then select Calculate.</p>
+          </div>
+          <button type="button" class="btn btn-outline" id="estimateBtn">Calculate estimate</button>
+        </div>
+        <div class="estimate-result" id="estimateResult" aria-live="polite">Enter your weight and destination to see your estimate.</div>
+      </div>
+
+      <div class="form-section">
+        <label class="consent"><input type="checkbox" name="consent" required><span>I agree that EZ Pack Ship and More may contact me about this quote request. *</span></label>
+      </div>
+
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <button class="btn btn-dark submit-btn" type="submit">Send Quote Request <svg class="icon"><use href="#i-arrow"/></svg></button>
+      <p class="form-status" id="formStatus" role="status"></p>
+      <p class="form-footnote">Submitting this form requests a quote; it does not purchase shipping or guarantee a rate.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="logo.jpg" alt="EZ Pack Ship and More logo">
+        <span class="brand-text">EZ PACK SHIP<small>AND MORE</small></span>
+      </a>
+      <p>Shipping, printing, graphic design and everyday business services, made easier.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-contact">
+        <li><svg class="icon"><use href="#i-pin"/></svg><span>4157 W Northgate Dr<br>Irving, TX 75062</span></li>
+        <li><svg class="icon"><use href="#i-phone"/></svg><a href="tel:+19724570100">(972) 457-0100</a></li>
+        <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:ezpackshipmore@gmail.com">ezpackshipmore@gmail.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <div class="footer-hours">
+        <div><span>Mon, Tue, Thu, Fri</span><span>9 – 6</span></div>
+        <div><span>Wednesday</span><span>9 – 6</span></div>
+        <div><span>Saturday</span><span>10 – 5</span></div>
+        <div><span>Sunday</span><span>Closed</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">© <span id="year"></span> EZ Pack Ship and More. All rights reserved.</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
